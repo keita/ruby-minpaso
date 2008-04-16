@@ -3,6 +3,7 @@
 * Keita Yamaguchi:
   * GitHub: http://github.com/keita/ruby-minpaso/tree/master
   * Reduced files included in the gem
+  * added bin/minpaso
 
 == 0.1.0: 2007-12-31
 
