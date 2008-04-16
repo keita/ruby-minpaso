@@ -1,4 +1,10 @@
-== 0.1.0 2007-12-31
+== 002: 2008-04-16
 
-* 1 major enhancement:
+* Keita Yamaguchi:
+  * GitHub: http://github.com/keita/ruby-minpaso/tree/master
+  * Reduced files included in the gem
+
+== 0.1.0: 2007-12-31
+
+* Keita Yamaguchi:
   * Initial release
