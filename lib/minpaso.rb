@@ -4,6 +4,8 @@ require "rexml/document"
 require "units/standard"
 
 module Minpaso
+  VERSION = "002"
+
   # params:: See http://minpaso.goga.co.jp/ja-JP/api.php for details.
   # - :manufacturer
   # - :product_name
