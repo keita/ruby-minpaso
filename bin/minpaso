@@ -1,0 +1,132 @@
+#!/usr/bin/env ruby
+
+require "rubygems"
+require "minpaso"
+require "optparse"
+
+$config = Hash.new
+
+Option = OptionParser.new do |opt|
+  opt.on("-m", "--manifacturer NAME", "Search by manufacturer") do |name|
+    $config[:manifacturer] = name
+  end
+
+  opt.on("-p", "--product NAME", "Search by product") do |name|
+    $config[:product_name] = name
+  end
+
+  opt.on("-c", "--cpu NAME", "Search by CPU") do |name|
+    $config[:cpu_name] = name
+  end
+
+  opt.on("-g", "--graphics NAME", "Search by graphic adapter") do |name|
+    $config[:graphics_adapter] = name
+  end
+
+  opt.on("--wei-min SCORE", "Sets minimum WEI score") do |score|
+    $config[:web_min] = score.to_i
+  end
+
+  opt.on("--wei-max SCORE", "Sets maximum WEI score") do |score|
+    $config[:wei_max] = score.to_i
+  end
+
+  opt.on("--cpu-min SCORE", "Sets minimum CPU score") do |score|
+    $config[:cpu_min] = score.to_i
+  end
+
+  opt.on("--cpu-max SCORE", "Sets maximum CPU score") do |score|
+    $config[:cpu_max] = score.to_i
+  end
+
+  opt.on("--memory-min SCORE", "Sets minimum memory score") do |score|
+    $config[:memory_min] = score.to_i
+  end
+
+  opt.on("--memory-max SCORE", "Sets maximum memory score") do |score|
+    $config[:memory_max] = score.to_i
+  end
+
+  opt.on("--video-min SCORE", "Sets minimum video score") do |score|
+    $config[:video_min] = score.to_i
+  end
+
+  opt.on("--video-max SCORE", "Sets maximum video score") do |score|
+    $config[:video_max] = score.to_i
+  end
+
+  opt.on("--game-min SCORE", "Sets minimum game score") do |score|
+    $config[:game_min] = score.to_i
+  end
+
+  opt.on("--game-max SCORE", "Sets maximum game score") do |score|
+    $config[:game_max] = score.to_i
+  end
+
+  opt.on("--hdd_min SCORE", "Sets minimum HDD score") do |score|
+    $config[:hdd_min] = score.to_i
+  end
+
+  opt.on("--hdd_max SCORE", "Sets maximum HDD score") do |score|
+    $config[:hdd_max] = score.to_i
+  end
+
+  opt.on("--total_min SCORE", "Sets minimum total score") do |score|
+    $config[:total_min] = score.to_i
+  end
+
+  opt.on("--tatal_max SCORE", "Sets maximum total score") do |score|
+    $config[:total_max] = score.to_i
+  end
+
+  opt.on("--sort CRITERION", "Sets sort criterion") do |c|
+    $config[:sort] = c
+  end
+
+  opt.on("--page NUMBER", "Specifies the page number") do |n|
+    $config[:page] = n
+  end
+
+  opt.on("--hide-homebuilt-computers", "Hides home-built computers") do
+    $config[:h] = 0
+  end
+
+  opt.on("--disable-score-estimation", "Disable score estimation") do
+    $config[:e] = 0
+  end
+
+  opt.on("-h", "--help", "Show this message") do
+    puts opt.help
+    exit
+  end
+
+  opt.on("-v", "--version", "Show the version of ruby-minpaso") do
+    puts Minpaso::VERSION
+    exit
+  end
+
+  opt.parse!(ARGV)
+end
+
+$label_width = 15
+
+def show(label, val)
+  puts "#{label}:".ljust($label_width) + val.to_s
+end
+
+result = Minpaso.search($config)
+result.items.each do |item|
+  puts "=== ID #{item.id} ==="
+  show "Product Name", item.product_name
+  show "Manufacture", item.manufacture
+  show "WEI Score", item.wei_score
+  show "CPU Score", item.cpu_score
+  show "Memory Score", item.memory_score
+  show "Video Score", item.video_score
+  show "Game Score", item.game_score
+  show "HDD Score", item.hdd_score
+  show "Total Score", item.total_score
+  puts
+end
+
+show "Nunber of Result", result.size
