@@ -1,7 +1,7 @@
 = README
 
 Authors::   Keita Yamaguchi(山口慶太)
-Copyright:: Copyright (C) Keita Yamaguchi, 2007. All rights reserved.
+Copyright:: © Keita Yamaguchi, 2007-2008. All rights reserved.
 License::   Ruby License
 
 == What
