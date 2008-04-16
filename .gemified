@@ -1,0 +1,11 @@
+--- 
+:summary: This is a wrapper library for Minpaso API(http://minpaso.goga.co.jp/).
+:email: keita.yamaguchi@gmail.com
+:has_rdoc: true
+:name: minpaso
+:homepage: http://rubyforge.org/projects/minpaso/
+:version: "002"
+:dependencies: 
+- units
+:rubyforge_project: minpaso
+:author: Keita Yamaguchi
